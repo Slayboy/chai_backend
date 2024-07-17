@@ -11,7 +11,7 @@ export { asyncHandler }
 //const asyncHandler = (func) => () => {}
 //const asyncHandler = (func) => async() => {}
 
-// const asyncHandler = (func) => async () => {
+// const asyncHandler = (func) => async (req, res, next) => {
 //     try {
 //         await func(req, res, next)
 //     }
