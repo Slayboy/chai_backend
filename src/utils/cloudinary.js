@@ -3,8 +3,8 @@ import fs from 'fs'
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: CLOUDINARY_API_KEY,
-    api_secret: CLOUDINARY_API_SECRET
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 const uploadOnCloudinary = async (localFilePath) => {
@@ -16,7 +16,8 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type: 'auto'
         })
         //file has been uploaded successfully
-        console.log("file is uploaded on cloudinary", respnose, respnose.url)
+        // console.log("file is uploaded on cloudinary", respnose, respnose.url)
+        fs.unlinkSync(localFilePath)  //remov/unlink the file from public folder when successfully file is stored in cloudinary
         return respnose
     }
     catch (error) {
